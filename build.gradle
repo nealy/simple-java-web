@@ -1,0 +1,44 @@
+group 'nealy'
+version '1.0-SNAPSHOT'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.13'
+    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
+
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.freemarker:freemarker:2.3.24-incubating'
+
+    compile 'org.apache.struts:struts2-core:2.3.28.1'
+    compile 'org.apache.struts:struts2-json-plugin:2.3.28.1'
+    compile 'org.apache.struts:struts2-spring-plugin:2.3.28.1'
+
+    compile 'org.springframework:spring-core:4.2.5.RELEASE'
+    compile 'org.springframework:spring-context:4.2.5.RELEASE'
+    compile 'org.springframework:spring-jdbc:4.2.5.RELEASE'
+    compile 'org.springframework:spring-tx:4.2.5.RELEASE'
+    compile 'org.springframework:spring-web:4.2.5.RELEASE'
+
+    compile 'org.mybatis:mybatis:3.4.0'
+    compile 'org.mybatis:mybatis-spring:1.3.0'
+
+    compile 'com.github.pagehelper:pagehelper:4.1.3'
+
+    compile 'mysql:mysql-connector-java:6.0.2'
+
+    compile 'org.apache.logging.log4j:log4j-api:2.5'
+    compile 'org.apache.logging.log4j:log4j-core:2.5'
+    testCompile 'junit:junit:4.12'
+}
